@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="field mb-3">
+    <b><%= form.label :name, :class => "form-label" %></b>
+    <%= form.text_field :name, :type => "text", :class => "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="field mb-3">
+    <b><%= form.label :description, :class => "form-label" %></b>
+    <%= form.text_area :description, :type => "textarea", :class => "form-control"  %>
   </div>
 
-  <div class="field">
-    <%= form.label :picture %>
-    <%= form.file_field :picture %>
+  <div class="field mb-3">
+    <b><%= form.label :picture, :class => "form-label"%></b>
+    <%= form.file_field :picture, :class => "btn btn-light"   %>
   </div>
 
   <div class="actions">
