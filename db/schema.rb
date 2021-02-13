@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_150248) do
     t.string "picture"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.decimal "status"
+    t.integer "status", default: 0
   end
 
 end
