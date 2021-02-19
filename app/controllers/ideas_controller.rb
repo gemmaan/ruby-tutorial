@@ -1,5 +1,5 @@
 class IdeasController < ApplicationController
-  before_action :set_idea, only: [:show, :edit, :update, :destroy, :approve]
+  before_action :set_idea, only: [:show, :edit, :update, :destroy, :approve, :unapprove, :changeStatus]
 
   # GET /ideas
   # GET /ideas.json
@@ -51,15 +51,25 @@ class IdeasController < ApplicationController
     end
   end
 
- 
-  def approve
+  def changeStatus
+    puts @idea.status
     respond_to do |format|
-      if @idea.update(status: 1)
-        format.html { redirect_to ideas_url, notice: 'Idea was successfully updated.' }
-        format.json { head :no_content }
+      if @idea.status == 'Needs_Approval'
+        if @idea.update(status: 1)
+          format.html { redirect_to ideas_url, notice: 'Idea was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render :edit }
+          format.json { render json: @idea.errors, status: :unprocessable_entity }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @idea.errors, status: :unprocessable_entity }
+        if @idea.update(status: 0)
+          format.html { redirect_to ideas_url, notice: 'Idea was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render :edit }
+          format.json { render json: @idea.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
