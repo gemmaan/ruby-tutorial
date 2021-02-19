@@ -52,7 +52,6 @@ class IdeasController < ApplicationController
   end
 
   def changeStatus
-    puts @idea.status
     respond_to do |format|
       if @idea.status == 'Needs_Approval'
         if @idea.update(status: 1)
