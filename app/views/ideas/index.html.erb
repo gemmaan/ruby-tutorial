@@ -12,6 +12,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Picture</th>
+        <th>Created by</th>
         <th>Status</th>
         <th colspan="4">Action</th>
       </tr>
@@ -23,6 +24,7 @@
           <td><%= idea.name %></td>
           <td><%= idea.description %></td>
           <td><%= image_tag idea.picture_url, width: '20%' if idea.picture.present? %></td>
+          <td><%= idea.author_id %></td>
           <td><%= idea.status.humanize %></td>
           <td><%= link_to 'Show', idea, class: "btn btn-primary"  %></td>
           <td><%= link_to 'Edit', edit_idea_path(idea), :class => "btn btn-warning" %></td>
