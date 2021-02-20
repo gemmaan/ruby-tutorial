@@ -26,6 +26,11 @@
     <%= form.file_field :picture, :class => "btn btn-light"   %>
   </div>
 
+  <div class="field mb-3">
+    <b><%= form.label :author, :class => "form-label" %></b>
+    <%= form.select :author, Author.all.map(&:name), :type => "textarea", :class => "form-control"  %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
